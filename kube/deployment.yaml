@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sf4-deployment
+  labels:
+    app: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      #imagePullSecrets:
+      #- name: gcr-json-key
+      containers:
+      - name: app
+        image: eu.gcr.io/meineapp/sf4:v13
+      #  imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+
+#kubectl run sf4-deployment --image=eu.gcr.io/meineapp/sf4:v1 --port=80
