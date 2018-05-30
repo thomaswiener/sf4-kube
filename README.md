@@ -83,20 +83,6 @@ Sign up to
     
     gcloud container clusters get-credentials symfony4-demo --zone europe-west1-b --project meineapp
 
-### Create deployment
-
-    kubectl apply -f kube/deployment.yaml
-    kubectl get deployment
- 
-### Create service (Allow external traffic)
-
-    kubectl apply -f kube/service.yaml
-    kubectl get svc
-
-### Get Cluster info
-
-    kubectl cluster-info
-    
 ### Connect to dashboard
    
     kubectl proxy
@@ -108,6 +94,30 @@ Sign up to
     kubectl create clusterrolebinding dashboard-admin -n default --clusterrole=cluster-admin --serviceaccount=default:dashboard
     kubectl get secret $(kubectl get serviceaccount dashboard -n default -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
     
+
+### Create deployment
+
+    kubectl apply -f kube/deployment.yaml
+    kubectl get deployment
+ 
+### Create service (Allow external traffic)
+
+    kubectl apply -f kube/service.yaml
+    kubectl get svc
+
+### Delete service
+
+    kubectl delete svc sf4-service
+    
+### Delete deployment
+
+    kubectl delete deployment sf4-deployment
+
+### Get Cluster info
+
+    kubectl cluster-info
+    
+
 ### Cleanup
 
     gcloud container clusters delete symfony4-demo --zone europe-west1-b

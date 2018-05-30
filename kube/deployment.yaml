@@ -14,13 +14,8 @@ spec:
       labels:
         app: app
     spec:
-      #imagePullSecrets:
-      #- name: gcr-json-key
       containers:
       - name: app
-        image: eu.gcr.io/meineapp/sf4:v13
-      #  imagePullPolicy: Always
+        image: eu.gcr.io/meineapp/sf4:v20
         ports:
         - containerPort: 80
-
-#kubectl run sf4-deployment --image=eu.gcr.io/meineapp/sf4:v1 --port=80

@@ -13,8 +13,9 @@ class IndexController extends Controller
     public function locale()
     {
         $data = [
-            'version' => \Symfony\Component\HttpKernel\Kernel::VERSION,
-            'datetime' => (new DateTime())->format('c')
+            'version'  => \Symfony\Component\HttpKernel\Kernel::VERSION,
+            'datetime' => (new DateTime())->format('c'),
+            'hostname' => gethostname(),
         ];
 
         return $this->render('welcome.html.twig', $data);
